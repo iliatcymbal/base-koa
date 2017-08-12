@@ -10,6 +10,8 @@ app.use(cors());
 
 const {users} = require('./routes');
 
+app.use(_.get('/', ctx => ctx.body = 'Hello Koa user'));
+
 app.use(_.get('/users', users.get));
 app.use(_.get('/users/:id', users.getById));
 app.use(_.post('/user', users.create));
