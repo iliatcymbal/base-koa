@@ -1,4 +1,5 @@
-const users = require('../db/users.json');
+const db = require('../db/');
+const users = db.get('users');
 
 module.exports = {
   get(ctx) {
@@ -13,5 +14,15 @@ module.exports = {
     }
 
     ctx.body = user;
+  },
+
+  async create(ctx, next) {
+    const newUser = ctx.request.body;
+    newUser.id = users.length + 1;
+    users.push(newUser);
+
+    ctx.body = await db.write('users', users, newUser);
+
+    await next();
   }
 };
