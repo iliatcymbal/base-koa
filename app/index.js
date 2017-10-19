@@ -1,24 +1,34 @@
-const _ = require('koa-route');
 const Koa = require('koa');
-const cors = require('kcors');
+const cors = require('koa2-cors');
 const koaBody = require('koa-body');
+const bodyParser = require('koa-bodyparser');
+const session = require('koa-session');
+const passport = require('koa-passport');
+
+const routing = require('./routing');
 
 const app = new Koa();
-
-app.use(koaBody());
 app.use(cors());
 
-const {users, tasks} = require('./routes');
+const route = routing(app);
 
-app.use(_.get('/', ctx => ctx.body = 'Hello Koa user'));
+app.use(bodyParser());
 
-app.use(_.get('/users', users.get));
-app.use(_.get('/users/:id', users.getById));
-app.use(_.post('/user', users.create));
+app.keys = ['secret'];
+app.use(session({}, app));
 
-app.use(_.get('/tasks', tasks.get));
-app.use(_.get('/tasks/:id', tasks.getById));
-app.use(_.post('/task', tasks.create));
+require('./auth');
+app.use(passport.initialize());
+app.use(passport.session());
+
+//app.use(koaBody());
+
+app.use(route.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/app',
+    failureRedirect: '/'
+  })
+));
 
 app.listen(8081);
 console.log('listening on port 8081');

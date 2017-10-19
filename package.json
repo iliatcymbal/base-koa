@@ -8,13 +8,19 @@
   },
   "dependencies": {
     "jsonfile": "^3.0.1",
-    "kcors": "^2.2.1",
     "koa": ">=2.2.x",
     "koa-body": ">=2.0.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-passport": "^4.0.1",
     "koa-route": "^3.2.0",
-    "koa-router": ">=7.x.x"
+    "koa-router": ">=7.x.x",
+    "koa-session": "^5.5.0",
+    "koa2-cors": "^2.0.3",
+    "passport-local": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
   "scripts": {
     "start": "node --harmony app/index.js",
     "start:dev": "node_modules/.bin/nodemon --harmony app/index.js"
