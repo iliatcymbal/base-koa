@@ -26,5 +26,5 @@ module.exports = {
         res(addInfo || data);
       });
     });
-  },
+  }
 };

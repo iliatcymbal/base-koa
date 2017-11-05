@@ -18,14 +18,20 @@ module.exports = class Controller {
   }
 
   async getById(ctx, id) {
-    const data = await this.getValue();
-    const item = data.find(value => value.id == id);
+    const item = this.findByField('id', id);
 
     if (!item) {
       return ctx.throw('cannot find requested resource', 404);
     }
 
     ctx.body = item;
+  }
+
+  async findByField(field, value) {
+      const data = await this.getValue();
+      const item = data.find(val => val[field] === value);
+
+      return item;
   }
 
   async create(ctx, next) {
@@ -39,5 +45,17 @@ module.exports = class Controller {
 
     await next();
   }
+
+    async update(ctx, next) {
+        const updatedItem = ctx.request.body;
+        const data = await this.getValue();
+        const item = data.find(element => element.id === updatedItem.id);
+
+        Object.assign(item, updatedItem);
+
+        ctx.body = await db.write(this.name, data, updatedItem);
+
+        await next();
+    }
 
 };
