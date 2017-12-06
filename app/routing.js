@@ -4,7 +4,7 @@ module.exports = (app) => {
   const {users, tasks} = require('./routes');
 
   app.use(_.get('/', ctx => {
-    ctx.body = {data: 'Hello Koa user'}
+    ctx.body = {data: 'Hello Easy user'}
   }));
 
   app.use(_.get('/users', users.get));
