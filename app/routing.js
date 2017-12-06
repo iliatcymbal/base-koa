@@ -14,7 +14,7 @@ module.exports = (app) => {
 
   app.use(_.get('/tasks', tasks.get));
   app.use(_.get('/tasks/:id', tasks.getById));
-  app.use(_.post('/task', tasks.create));
+  app.use(_.post('/tasks', tasks.create));
 
   return _;
 };

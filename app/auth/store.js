@@ -1,17 +1,20 @@
-const {Store} = require("koa-session2");
+const { randomBytes } = require('crypto');
 const db = require('../db');
 
-class LocalStore extends Store {
+class LocalStore {
+  getID(length) {
+    return randomBytes(length).toString('hex');
+  }
+
   async get(sid, ctx) {
     const users = await db.get('users');
     const user = users.find(user => user.sid === sid);
+    const session = user && { passport: { user: user.id } } || false;
 
-    return JSON.parse(this.sessions.get(sid) || '{}');
+    return session;
   }
 
   async set(session, {sid = this.getID(24), maxAge = 1000000} = {}, ctx) {
-    this.sessions.set(sid, JSON.stringify(session));
-
     try {
       const users = await db.get('users');
       const user = users.find(item => session.passport && item.id === session.passport.user);
@@ -19,7 +22,7 @@ class LocalStore extends Store {
       user.sid = sid;
       await db.write('users', users, user);
     } catch (e) {
-      console.log('Error set users', e);
+      console.log('Error set user sid', e);
     }
 
     return sid;
@@ -36,7 +39,7 @@ class LocalStore extends Store {
       console.log('Error remove sid user', e);
     }
 
-    super.destroy(sid);
+    delete this.sessions[sid];
   }
 }
 

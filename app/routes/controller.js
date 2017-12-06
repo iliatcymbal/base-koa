@@ -46,16 +46,16 @@ module.exports = class Controller {
     await next();
   }
 
-    async update(ctx, next) {
-        const updatedItem = ctx.request.body;
-        const data = await this.getValue();
-        const item = data.find(element => element.id === updatedItem.id);
+  async update(ctx, next) {
+      const updatedItem = ctx.request.body;
+      const data = await this.getValue();
+      const item = data.find(element => element.id === updatedItem.id);
 
-        Object.assign(item, updatedItem);
+      Object.assign(item, updatedItem);
 
-        ctx.body = await db.write(this.name, data, updatedItem);
+      ctx.body = await db.write(this.name, data, updatedItem);
 
-        await next();
-    }
+      await next();
+  }
 
 };

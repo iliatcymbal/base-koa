@@ -26,7 +26,7 @@ const initPassport = (app) => {
         ctx.body = {success: false};
         ctx.throw(401);
       } else {
-        ctx.body = {success: true};
+        ctx.body = {success: true, user};
         return ctx.login(user);
       }
     })(ctx);
