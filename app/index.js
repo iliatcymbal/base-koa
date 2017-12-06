@@ -18,4 +18,4 @@ auth(app);
 routing(app);
 
 app.listen(8081);
-console.log('listening on port 8081');
+console.log('Check http://localhost:8081');
