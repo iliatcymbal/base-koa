@@ -1,20 +1,25 @@
-const _ = require('koa-route');
+const Router = require('koa-router');
+const _ = new Router();
 
 module.exports = (app) => {
   const {users, tasks} = require('./routes');
 
-  app.use(_.get('/', ctx => {
+  _.get('/', ctx => {
     ctx.body = {data: 'Hello Easy user'}
-  }));
+  });
 
-  app.use(_.get('/users', users.get));
-  app.use(_.get('/users/:id', users.getById));
-  app.use(_.post('/public/user', users.create));
-  app.use(_.put('/user', users.update));
+  _.get('/users', users.get);
+  _.get('/users/:id', users.getById);
+  _.post('/public/user', users.create);
+  _.put('/user', users.update);
 
-  app.use(_.get('/tasks', tasks.get));
-  app.use(_.get('/tasks/:id', tasks.getById));
-  app.use(_.post('/tasks', tasks.create));
+  _.get('/tasks', tasks.get);
+  _.get('/tasks/:id', tasks.getById);
+  _.post('/tasks', tasks.create);
+  _.put('/tasks/:id', tasks.update);
+
+
+  app.use(_.routes());
 
   return _;
 };

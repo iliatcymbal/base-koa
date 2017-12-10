@@ -1,1 +1,11 @@
-[{"id":10,"firstName":"admin","lastName":"Pethrick","email":"admin","password":"admin","gender":"Male","age":19,"sid":"b9fad6dd17cfed54d51b9621fe89b5144c69f1a0d6b97eda"}]
+[
+  {
+    "id": 10,
+    "firstName": "admin",
+    "lastName": "Pethrick",
+    "email": "admin",
+    "password": "admin",
+    "gender": "Male",
+    "age": 19
+  }
+]

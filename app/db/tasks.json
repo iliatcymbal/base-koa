@@ -3,26 +3,22 @@
     {
       "description": "Some description is here",
       "title": "Read book",
-      "day": 1,
-      "id": 0,
+      "day": 0,
+      "id": "00",
       "done": true
     },
     {
       "description": "Make home tasks (english)",
       "title": "Make homework",
-      "day": 1,
-      "id": 1,
+      "day": 0,
+      "id": "01",
       "done": false
     },
     {
-      "title": "Clean room",
-      "day": 1,
-      "id": 2
-    },
-    {
-      "title": "Walk with dog",
-      "day": 1,
-      "id": 3
+      "title": "Cleaning Room",
+      "day": 0,
+      "id": "02",
+      "description": "Clean room, order books"
     }
   ],
 
@@ -31,22 +27,29 @@
       "description": "Make home tasks (math, geo)",
       "title": "Make homework",
       "day": 1,
-      "id": 0
+      "id": "10"
+    }
+  ],
+
+  [
+    {
+      "description": "",
+      "title": "Go to gym",
+      "day": "2",
+      "id": "20"
     }
   ],
 
   [],
   [],
   [],
-  [],
-
 
   [
     {
       "description": "watch King Lion, How to Train Your Dragon",
-      "title": "Watch cartoon",
-      "day": 0,
-      "id": 0
+      "title": "Watch cartoons",
+      "day": 6,
+      "id": "60"
     }
   ]
 ]
