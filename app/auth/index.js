@@ -24,7 +24,7 @@ const initPassport = (app) => {
     return passport.authenticate('local', function (err, user) {
       if (!user) {
         ctx.body = {success: false};
-        ctx.throw(401);
+        ctx.throw(401, 'Password or email wrong');
       } else {
         ctx.body = {success: true, user};
         return ctx.login(user);

@@ -4,13 +4,25 @@
       "description": "Some description is here",
       "title": "Read book",
       "day": 1,
-      "id": 0
+      "id": 0,
+      "done": true
     },
     {
       "description": "Make home tasks (english)",
       "title": "Make homework",
       "day": 1,
-      "id": 1
+      "id": 1,
+      "done": false
+    },
+    {
+      "title": "Clean room",
+      "day": 1,
+      "id": 2
+    },
+    {
+      "title": "Walk with dog",
+      "day": 1,
+      "id": 3
     }
   ],
 
