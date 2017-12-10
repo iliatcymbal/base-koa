@@ -1,1 +1,40 @@
-[[{"description":"zxzxzx","title":"tttttt11","day":"0","id":0},{"description":"zxzxzx","title":"Other","day":"0","id":1}],[],[],[],[],[],[{"description":"","title":"Sunday","day":"6","id":0}]]
+[
+  [
+    {
+      "description": "Some description is here",
+      "title": "Read book",
+      "day": 1,
+      "id": 0
+    },
+    {
+      "description": "Make home tasks (english)",
+      "title": "Make homework",
+      "day": 1,
+      "id": 1
+    }
+  ],
+
+  [
+    {
+      "description": "Make home tasks (math, geo)",
+      "title": "Make homework",
+      "day": 1,
+      "id": 0
+    }
+  ],
+
+  [],
+  [],
+  [],
+  [],
+
+
+  [
+    {
+      "description": "watch King Lion, How to Train Your Dragon",
+      "title": "Watch cartoon",
+      "day": 0,
+      "id": 0
+    }
+  ]
+]
