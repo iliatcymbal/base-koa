@@ -34,7 +34,7 @@ where _day_ is an array of objects:
   "description": String,
   "title": String,
   "day": number,
-  "id": number,
+  "id": String,
   "done": boolean | undefined
 }
 ```
