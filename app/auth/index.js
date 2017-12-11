@@ -37,7 +37,7 @@ const initPassport = (app) => {
 
     try {
       const users = await db.get('users');
-      const user = users.find(item => cookie === item.sid);
+      const user = users.find(item => item.sid && cookie === item.sid);
 
       if (user) {
         delete user.sid;
@@ -60,7 +60,7 @@ const initPassport = (app) => {
 
   app.use(async (ctx, next) => {
     const publicPath = ctx.url.includes('public') || ctx.url === '/';
-
+debugger
     if (publicPath || ctx.isAuthenticated()) {
       await next();
     } else {
