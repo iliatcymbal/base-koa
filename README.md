@@ -10,7 +10,8 @@
 ## API
 All urls has public and private mode.  
 Public urls start with `public/` and do not require any authenticating credentials.  
-Private urls require special cookie (ECSID) in every request.
+Private urls require special cookie (ECSID) in every request.  
+Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials
 
 ### User API
 `public/login` _post_ { username, password } - by default there is one user in the system with `admin/admin` credentials.  
