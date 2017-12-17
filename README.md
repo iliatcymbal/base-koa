@@ -18,6 +18,23 @@ Do not forget to use `withCredentials` flag for CORS stuff https://developer.moz
 On success returns object { success: true, user: {...} }  
 On error returns 401 error 'Password or email wrong'  
 
+There is an example for `login` request:
+
+```
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:8081/public/login');
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    } else {
+      throw new Error(xhr.responseText);
+    }
+  };
+  xhr.withCredentials = true;
+  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  xhr.send(JSON.stringify({ username: 'admin', password: 'admin' }));
+```
+
 `public/user` _post_ { firstname, lastname, email, password } - create new user
 
 `public/checkUser` _get_ - if user is authenticated, return object with user {...}, in other case - 404 error { error: "User is not authenticated"}
