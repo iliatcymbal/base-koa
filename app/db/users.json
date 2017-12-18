@@ -1,12 +1,11 @@
 [
   {
-    "id": 10,
+    "id": 0,
     "firstName": "admin",
     "lastName": "Pethrick",
-    "email": "admin",
+    "email": "admin@a.com",
     "password": "admin",
     "gender": "Male",
-    "age": 19,
-    "sid": "681f894995445266306a69a1921c093cef1484e2ef89eeed"
+    "age": 19
   }
 ]

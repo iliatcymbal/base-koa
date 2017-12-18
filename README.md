@@ -14,7 +14,7 @@ Private urls require special cookie (ECSID) in every request.
 Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials
 
 ### User API
-`public/login` _post_ { username, password } - by default there is one user in the system with `admin/admin` credentials.  
+`public/login` _post_ { username, password } - by default there is one user in the system with `admin@a.com/admin` credentials.  
 On success returns object { success: true, user: {...} }  
 On error returns 401 error 'Password or email wrong'  
 
