@@ -14,11 +14,12 @@ class LocalStore {
     return session;
   }
 
-  async set(session, {sid = this.getID(24), maxAge = 1000000} = {}, ctx) {
+  async set(session, { sid = this.getID(24), maxAge = 1000000 } = {}, ctx) {
     try {
+      debugger;
       const users = await db.get('users');
       const user = users.find(item => session.passport && item.id === session.passport.user);
-
+      console.log('>>', session, users);
       user.sid = sid;
       await db.write('users', users, user);
     } catch (e) {

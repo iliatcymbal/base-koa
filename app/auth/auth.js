@@ -4,7 +4,8 @@ const userDB = require('../db');
 
 const fetchUser = async (name, pass, idUser) => {
   const users = await userDB.get('users');
-  const user = users.find(({ email, password , id}) => idUser && id === idUser || email === name && password === pass);
+  const user = users.find(({ email, password, id }) =>
+    idUser !== undefined && id === idUser || email === name && password === pass);
 
   return user;
 };
@@ -13,7 +14,7 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(async function(id, done) {
+passport.deserializeUser(async function (id, done) {
   try {
     const user = await fetchUser(null, null, id);
     done(null, user || null);
@@ -22,7 +23,7 @@ passport.deserializeUser(async function(id, done) {
   }
 });
 
-passport.use(new LocalStrategy(function(username, password, done) {
+passport.use(new LocalStrategy((username, password, done) => {
   fetchUser(username, password)
     .then((user) => {
       if (user) {
