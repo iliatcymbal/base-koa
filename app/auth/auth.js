@@ -16,20 +16,20 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(async function(id, done) {
   try {
     const user = await fetchUser(null, null, id);
-    done(null, user);
-  } catch(err) {
+    done(null, user || null);
+  } catch (err) {
     done(err);
   }
 });
 
 passport.use(new LocalStrategy(function(username, password, done) {
   fetchUser(username, password)
-    .then(user => {
+    .then((user) => {
       if (user) {
         done(null, user);
       } else {
         done(null, false);
       }
     })
-    .catch(err => done(err))
+    .catch(err => done(err));
 }));
