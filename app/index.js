@@ -10,7 +10,7 @@ const app = new Koa();
 
 app.use(logger());
 app.use(cors({
-  credentials: true
+  credentials: true,
 }));
 app.use(bodyParser());
 

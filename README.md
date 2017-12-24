@@ -14,11 +14,11 @@ Private urls require special cookie (ECSID) in every request.
 Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials
 
 ### User API
-`public/login` _post_ { username, password } - by default there is one user in the system with `admin@a.com/admin` credentials.  
+`public/login` _post_ { email, password } - by default there is one user in the system with `admin@a.com/admin` credentials.  
 On success returns object { success: true, user: {...} }  
 On error returns 401 error 'Password or email wrong'  
 
-There is an example for `login` request:
+There is an example for `login` request with pure js:
 
 ```
   const xhr = new XMLHttpRequest();
@@ -32,7 +32,21 @@ There is an example for `login` request:
   };
   xhr.withCredentials = true;
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-  xhr.send(JSON.stringify({ username: 'admin', password: 'admin' }));
+  xhr.send(JSON.stringify({ email: 'admin@a.com', password: 'admin' }));
+```
+
+
+AJAX example with jquery: 
+
+```
+$.ajax({
+  type: 'post',
+  url: 'http://localhost:8081/public/login',
+  data: { email: 'admin@a.com', password: 'admin' },
+  xhrFields: {
+    withCredentials: true
+  }
+});
 ```
 
 `public/user` _post_ { firstname, lastname, email, password } - create new user

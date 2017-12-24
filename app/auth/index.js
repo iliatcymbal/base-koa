@@ -13,20 +13,20 @@ const initPassport = (app) => {
     maxAge: 24 * 60 * 60 * 1000,
     saveUninitialized: true,
     resave: true,
-    store
+    store,
   }));
 
   require('./auth');
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use(route.post('/public/login', function (ctx) {
-    return passport.authenticate('local', function (err, user) {
+  app.use(route.post('/public/login', (ctx) => {
+    return passport.authenticate('local', (err, user) => {
       if (!user) {
-        ctx.body = {success: false};
+        ctx.body = { success: false };
         ctx.throw(401, 'Password or email wrong');
       } else {
-        ctx.body = {success: true, user};
+        ctx.body = { success: true, user };
         return ctx.login(user);
       }
     })(ctx);
@@ -45,7 +45,7 @@ const initPassport = (app) => {
         ctx.body = user;
       } else {
         ctx.status = 404;
-        ctx.body = {error: 'User is not authenticated'};
+        ctx.body = { error: 'User is not authenticated' };
       }
     } catch (e) {
       console.log('Error get user', e);
@@ -55,16 +55,16 @@ const initPassport = (app) => {
   app.use(route.get('/logout', async (ctx) => {
     store.destroy(ctx.cookies.get('ECSID'));
     ctx.logout();
-    ctx.status = 204
+    ctx.status = 204;
   }));
 
   app.use(async (ctx, next) => {
     const publicPath = ctx.url.includes('public') || ctx.url === '/';
-debugger
+
     if (publicPath || ctx.isAuthenticated()) {
       await next();
     } else {
-      ctx.body = {success: false};
+      ctx.body = { success: false };
       ctx.throw(401);
     }
   });

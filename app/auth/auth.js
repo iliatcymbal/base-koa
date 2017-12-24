@@ -10,11 +10,11 @@ const fetchUser = async (name, pass, idUser) => {
   return user;
 };
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(async function (id, done) {
+passport.deserializeUser(async (id, done) => {
   try {
     const user = await fetchUser(null, null, id);
     done(null, user || null);
@@ -23,14 +23,16 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
-passport.use(new LocalStrategy((username, password, done) => {
-  fetchUser(username, password)
-    .then((user) => {
-      if (user) {
-        done(null, user);
-      } else {
-        done(null, false);
-      }
-    })
-    .catch(err => done(err));
-}));
+passport.use(new LocalStrategy(
+  { usernameField: 'email' },
+  (username, password, done) => {
+    fetchUser(username, password)
+      .then((user) => {
+        if (user) {
+          done(null, user);
+        } else {
+          done(null, false);
+        }
+      })
+      .catch(err => done(err));
+  }));
