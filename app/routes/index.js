@@ -3,5 +3,5 @@ const tasks = require('./tasks');
 
 module.exports = {
   users,
-  tasks
+  tasks,
 };

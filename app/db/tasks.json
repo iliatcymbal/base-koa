@@ -8,16 +8,23 @@
       "done": true
     },
     {
+      "description": "",
+      "title": "Write article",
+      "day": 0,
+      "id": "01",
+      "done": true
+    },
+    {
       "description": "Make home tasks (english)",
       "title": "Make homework",
       "day": 0,
-      "id": "01",
+      "id": "02",
       "done": false
     },
     {
       "title": "Cleaning Room",
       "day": 0,
-      "id": "02",
+      "id": "03",
       "description": "Clean room, order books"
     }
   ],
@@ -37,6 +44,12 @@
       "title": "Go to gym",
       "day": "2",
       "id": "20"
+    },
+    {
+      "description": "",
+      "title": "Play PC",
+      "day": "2",
+      "id": "21"
     }
   ],
 

@@ -8,9 +8,9 @@
    you should see `{data: 'Hello Easy user'}`
    
 ## API
-All urls has public and private mode.  
-Public urls start with `public/` and do not require any authenticating credentials.  
-Private urls require special cookie (ECSID) in every request.  
+All urls have public and private mode.  
+Public urls start with `public/` prefix and do not require any authenticating credentials.  
+Private urls require special cookie (ECSID) in every request. User gets this cookie after successful login.  
 Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials
 
 ### User API
@@ -75,3 +75,14 @@ Note: the first item in the days list is a Sunday.
 `tasks` _post_ - { title, description?, day } - creates new task in a day, returns new task
 
 `tasks/id` _put_ - { title, description?, id, day } - update existing task, returns updated task
+
+`info` _get_ - return object with general tasks info 
+```
+{
+  "done": 2,
+  "inProgress": 1,
+  "waiting": 5,
+  "total": 8
+}
+
+```

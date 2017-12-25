@@ -1,5 +1,5 @@
 const Controller = require('./controller');
-const db  = require('../db');
+const db = require('../db');
 
 class Tasks extends Controller {
   constructor(name) {
@@ -9,6 +9,7 @@ class Tasks extends Controller {
     this.update = this.update.bind(this);
     this.get = this.get.bind(this);
     this.getById = this.getById.bind(this);
+    this.getInfo = this.getInfo.bind(this);
   }
 
   async get(ctx) {
@@ -16,20 +17,54 @@ class Tasks extends Controller {
 
     items.forEach(item => item.forEach(data => delete data.description));
     ctx.body = items;
+
+    return items;
+  }
+
+  async getInfo(ctx) {
+    const items = await this.getValue();
+    const result = items
+      .reduce((list, item) => [...list, ...item], [])
+      .reduce((data, task) => {
+        const newData = { ...data };
+        const { done, inProgress, waiting } = data;
+
+        if ('done' in task === false) {
+          newData.waiting = waiting + 1;
+        }
+
+        if (task.done) {
+          newData.done = done + 1;
+        }
+
+        if (task.done === false) {
+          newData.inProgress = inProgress + 1;
+        }
+
+        newData.total = newData.waiting + newData.done + newData.inProgress;
+
+        return newData;
+      }, { done: 0, inProgress: 0, waiting: 0 });
+
+    ctx.body = result;
+
+    return result;
   }
 
   async getById(ctx) {
     const days = await this.getValue();
-    const id = ctx.params.id;
+    const { id } = ctx.params;
     const item = days
       .reduce((acc, items) => [...acc, ...items], [])
-      .find(item => String(item.id) === String(id));
+      .find(data => String(data.id) === String(id));
 
     if (!item) {
       return ctx.throw('cannot find requested task', 404);
     }
 
     ctx.body = item;
+
+    return item;
   }
 
   async create(ctx, next) {
@@ -62,9 +97,9 @@ class Tasks extends Controller {
     await next();
   }
 
-  async update(ctx, next) {console.log('-->', ctx.params);
+  async update(ctx, next) {
     const data = ctx.request.body;
-    const id = ctx.params.id;
+    const { id } = ctx.params;
     const { day, title, description } = data;
 
     if (day === undefined) {

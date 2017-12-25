@@ -1,11 +1,10 @@
 [
   {
     "id": 0,
-    "firstName": "admin",
+    "firstName": "Jasper",
     "lastName": "Pethrick",
     "email": "admin@a.com",
     "password": "admin",
-    "gender": "Male",
     "age": 19
   }
 ]
