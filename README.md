@@ -5,7 +5,7 @@
 2) Go to project folder and make *npm i*
 3) Run *npm start* to start server. Server is available on http://localhost:8081/
 4) Check route http://localhost:8081  
-   you should see `{data: 'Hello Easy user'}`
+   you should see `{data: 'Hello Easy User'}`
    
 ## API
 All urls have public and private mode.  
@@ -15,7 +15,7 @@ Do not forget to use `withCredentials` flag for CORS stuff https://developer.moz
 
 ### User API
 `public/login` _post_ { email, password } - by default there is one user in the system with `admin@a.com/admin` credentials.  
-On success returns object { success: true, user: {...} }  
+On success returns object with user fields {...}  
 On error returns 401 error 'Password or email wrong'  
 
 There is an example for `login` request with pure js:

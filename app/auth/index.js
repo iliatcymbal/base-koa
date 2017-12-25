@@ -23,10 +23,10 @@ const initPassport = (app) => {
   app.use(route.post('/public/login', (ctx) => {
     return passport.authenticate('local', (err, user) => {
       if (!user) {
-        ctx.body = { success: false };
+        ctx.body = { user: false };
         ctx.throw(401, 'Password or email wrong');
       } else {
-        ctx.body = { success: true, user };
+        ctx.body = { ...user };
         return ctx.login(user);
       }
     })(ctx);

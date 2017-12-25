@@ -6,7 +6,7 @@ module.exports = (app) => {
   const { users, tasks } = require('./routes');
 
   _.get('/', (ctx) => {
-    ctx.body = { data: 'Hello Easy user' };
+    ctx.body = { data: 'Hello Easy User' };
   });
 
   _.get('/users', users.get);
