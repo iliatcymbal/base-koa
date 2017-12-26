@@ -12,23 +12,19 @@
       "title": "Write article",
       "day": 0,
       "id": "01",
-      "done": true
+      "done": false
     },
     {
-      "description": "Make home tasks (english)",
       "title": "Make homework",
       "day": 0,
-      "id": "02",
-      "done": false
+      "id": "02"
     },
     {
       "title": "Cleaning Room",
       "day": 0,
-      "id": "03",
-      "description": "Clean room, order books"
+      "id": "03"
     }
   ],
-
   [
     {
       "description": "Make home tasks (math, geo)",
@@ -37,7 +33,6 @@
       "id": "10"
     }
   ],
-
   [
     {
       "description": "",
@@ -52,11 +47,16 @@
       "id": "21"
     }
   ],
-
   [],
   [],
-  [],
-
+  [
+    {
+      "title": "Visit grandma",
+      "day": 5,
+      "id": "50",
+      "done": true
+    }
+  ],
   [
     {
       "description": "watch King Lion, How to Train Your Dragon",

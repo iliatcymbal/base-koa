@@ -10,6 +10,7 @@ class Tasks extends Controller {
     this.get = this.get.bind(this);
     this.getById = this.getById.bind(this);
     this.getInfo = this.getInfo.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   async get(ctx) {
@@ -87,7 +88,7 @@ class Tasks extends Controller {
     const tasks = days[day];
     const newTask = {
       ...data,
-      id: `${day}${tasks.length}`
+      id: `${day}${tasks.length}`,
     };
 
     tasks.push(newTask);
@@ -127,8 +128,40 @@ class Tasks extends Controller {
     if (task) {
       task.title = title;
       task.description = description;
+
+      if ('done' in data) {
+        task.done = data.done;
+      }
     }
 
+    await db.write(this.name, days, task);
+    ctx.body = task;
+
+    await next();
+  }
+
+  async delete(ctx, next) {
+    const { id } = ctx.params;
+    const find = item => String(item.id) === String(id);
+
+    if (id === undefined) {
+      ctx.status = 400;
+      ctx.body = { error: 'ID should be defined' };
+      return;
+    }
+
+    const days = await this.getValue();
+    const tasks = days.find(tsks => tsks.find(find));
+    const task = tasks && tasks.find(find);
+    const index = task && tasks.indexOf(task);
+
+    if (index === -1 || index === undefined) {
+      ctx.status = 400;
+      ctx.body = { error: `Can't find task with ${id} id` };
+      return;
+    }
+
+    tasks.splice(index, 1);
     await db.write(this.name, days, task);
     ctx.body = task;
 

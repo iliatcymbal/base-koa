@@ -19,6 +19,7 @@ module.exports = (app) => {
   _.get('/tasks/:id', tasks.getById);
   _.post('/tasks', tasks.create);
   _.put('/tasks/:id', tasks.update);
+  _.delete('/tasks/:id', tasks.delete);
 
 
   app.use(_.routes());
