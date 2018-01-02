@@ -1,12 +1,10 @@
 const Controller = require('./controller');
-const db = require('../db');
 
 class Category extends Controller {
   constructor(name) {
     super(name);
 
     this.create = this.create.bind(this);
-    this.update = this.update.bind(this);
   }
 
   async create(ctx, next) {

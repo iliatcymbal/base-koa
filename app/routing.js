@@ -2,6 +2,24 @@ const Router = require('koa-router');
 
 const _ = new Router();
 
+const createCommonRoutes = (routeController, name, allPrivate) => {
+  const fields = [
+    { verb: 'get', method: 'get', pub: true },
+    { verb: 'get', method: 'getById', pub: true, param: 'id' },
+    { verb: 'post', method: 'create' },
+    { verb: 'put', method: 'update', param: 'id' },
+    { verb: 'delete', method: 'delete', param: 'id' },
+  ];
+
+  fields.forEach(({ verb, method, pub, param }) => {
+    const params = param ? `/:${param}` : '';
+    const prefix = !allPrivate && pub ? '/public' : '';
+    const uri = `${prefix}/${name}${params}`;
+
+    _[verb](uri, routeController[method]);
+  });
+};
+
 module.exports = (app) => {
   const { users, tasks, categories } = require('./routes');
 
@@ -14,18 +32,11 @@ module.exports = (app) => {
   _.post('/public/user', users.create);
   _.put('/user', users.update);
 
-  _.get('/tasks', tasks.get);
-  _.get('/info', tasks.getInfo);
-  _.get('/tasks/:id', tasks.getById);
-  _.post('/tasks', tasks.create);
-  _.put('/tasks/:id', tasks.update);
-  _.delete('/tasks/:id', tasks.delete);
 
-  _.get('/public/categories', categories.get);
-  _.get('/public/categories/:id', categories.getById);
-  _.post('/categories', categories.create);
-  _.put('/categories/:id', categories.update);
-  _.delete('/categories/:id', categories.delete);
+  createCommonRoutes(tasks, 'tasks', true);
+  _.get('/info', tasks.getInfo);
+
+  createCommonRoutes(categories, 'categories');
 
   app.use(_.routes());
 
