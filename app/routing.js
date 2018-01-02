@@ -23,9 +23,9 @@ module.exports = (app) => {
 
   _.get('/public/categories', categories.get);
   _.get('/public/categories/:id', categories.getById);
-  _.post('/public/categories', categories.create);
-  _.put('/public/categories/:id', categories.update);
-  _.delete('/public/categories/:id', categories.delete);
+  _.post('/categories', categories.create);
+  _.put('/categories/:id', categories.update);
+  _.delete('/categories/:id', categories.delete);
 
   app.use(_.routes());
 
