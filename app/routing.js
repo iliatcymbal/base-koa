@@ -3,7 +3,7 @@ const Router = require('koa-router');
 const _ = new Router();
 
 module.exports = (app) => {
-  const { users, tasks } = require('./routes');
+  const { users, tasks, categories } = require('./routes');
 
   _.get('/', (ctx) => {
     ctx.body = { data: 'Hello Easy User' };
@@ -21,6 +21,11 @@ module.exports = (app) => {
   _.put('/tasks/:id', tasks.update);
   _.delete('/tasks/:id', tasks.delete);
 
+  _.get('/public/categories', categories.get);
+  _.get('/public/categories/:id', categories.getById);
+  _.post('/public/categories', categories.create);
+  _.put('/public/categories/:id', categories.update);
+  _.delete('/public/categories/:id', categories.delete);
 
   app.use(_.routes());
 

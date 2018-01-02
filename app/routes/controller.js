@@ -7,6 +7,8 @@ module.exports = class Controller {
     this.get = this.get.bind(this);
     this.getById = this.getById.bind(this);
     this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   getValue() {
@@ -17,8 +19,9 @@ module.exports = class Controller {
     ctx.body = await this.getValue();
   }
 
-  async getById(ctx, id) {
-    const item = this.findByField('id', id);
+  async getById(ctx) {
+    const { id } = ctx.params;
+    const item = await this.findByField('id', id);
 
     if (!item) {
       return ctx.throw('cannot find requested resource', 404);
@@ -29,7 +32,7 @@ module.exports = class Controller {
 
   async findByField(field, value) {
     const data = await this.getValue();
-    const item = data.find(val => val[field] === value);
+    const item = data.find(val => String(val[field]) === String(value));
 
     return item;
   }
@@ -48,12 +51,47 @@ module.exports = class Controller {
 
   async update(ctx, next) {
     const updatedItem = ctx.request.body;
+    const { id } = ctx.params;
     const data = await this.getValue();
-    const item = data.find(element => element.id === updatedItem.id);
+    const item = data.find(element => String(element.id) === String(id));
 
+    if (!item) {
+      ctx.status = 404;
+      ctx.body = { error: `There is no ${this.name} with such id` };
+      return;
+    }
+
+    delete updatedItem.id;
     Object.assign(item, updatedItem);
 
     ctx.body = await db.write(this.name, data, updatedItem);
+
+    await next();
+  }
+
+  async delete(ctx, next) {
+    const { id } = ctx.params;
+    const find = item => String(item.id) === String(id);
+
+    if (id === undefined) {
+      ctx.status = 400;
+      ctx.body = { error: 'ID should be defined' };
+      return;
+    }
+
+    const items = await this.getValue();
+    const item = items && items.find(find);
+    const index = item && items.indexOf(item);
+
+    if (index === -1 || index === undefined) {
+      ctx.status = 400;
+      ctx.body = { error: `Can't find entity with ${id} id` };
+      return;
+    }
+
+    items.splice(index, 1);
+    await db.write(this.name, items, item);
+    ctx.body = item;
 
     await next();
   }

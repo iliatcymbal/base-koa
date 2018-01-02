@@ -1,10 +1,1 @@
-[
-  {
-    "id": 0,
-    "firstName": "Jasper",
-    "lastName": "Pethrick",
-    "email": "admin@a.com",
-    "password": "admin",
-    "age": 19
-  }
-]
+[{"id":0,"firstName":"Jasper","lastName":"Pethrick","email":"admin@a.com","password":"admin","age":19,"sid":"dee6b57b3f418c0aa82ad22f12cee30c884f1aba3d48465e"}]
