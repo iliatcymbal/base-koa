@@ -1,0 +1,42 @@
+[
+  {
+    "title": "TOW TRACKS",
+    "id": 1,
+    "price": "4.25"
+  },
+  {
+    "title": "DISNEY COLLECTION",
+    "id": 2,
+    "price": "10.5"
+  },
+  {
+    "title": "HERB CABLER",
+    "id": 3,
+    "price": "6.75"
+  },
+  {
+    "title": "ROBO TRAX",
+    "price": "17",
+    "id": 4
+  },
+  {
+    "title": "Marvel Black Panther",
+    "price": "19.3",
+    "id": 5
+  },
+  {
+    "title": "Funko POP Marvel Spider-Man",
+    "price": "8.9",
+    "id": 6
+  },
+  {
+    "title": "Captain America Figure",
+    "price": "10",
+    "id": 7
+  },
+  {
+    "title": "Marvel Avengers Titan Hero Series Hulk",
+    "price": "9.7",
+    "id": 8
+  }
+]

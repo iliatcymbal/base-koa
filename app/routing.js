@@ -2,7 +2,8 @@ const Router = require('koa-router');
 
 const _ = new Router();
 
-const createCommonRoutes = (routeController, name, allPrivate) => {
+const createCommonRoutes = (opts) => {
+  const { routeController, name, allPrivate } = opts;
   const fields = [
     { verb: 'get', method: 'get', pub: true },
     { verb: 'get', method: 'getById', pub: true, param: 'id' },
@@ -13,7 +14,7 @@ const createCommonRoutes = (routeController, name, allPrivate) => {
 
   fields.forEach(({ verb, method, pub, param }) => {
     const params = param ? `/:${param}` : '';
-    const prefix = !allPrivate && pub ? '/public' : '';
+    const prefix = !allPrivate && pub ? '/public' : '/public';
     const uri = `${prefix}/${name}${params}`;
 
     _[verb](uri, routeController[method]);
@@ -21,7 +22,7 @@ const createCommonRoutes = (routeController, name, allPrivate) => {
 };
 
 module.exports = (app) => {
-  const { users, tasks, categories } = require('./routes');
+  const { users, tasks, categories, products } = require('./routes');
 
   _.get('/', (ctx) => {
     ctx.body = { data: 'Hello Easy User' };
@@ -32,11 +33,12 @@ module.exports = (app) => {
   _.post('/public/user', users.create);
   _.put('/user', users.update);
 
-
-  createCommonRoutes(tasks, 'tasks', true);
+  createCommonRoutes({ routeController: tasks, name: 'tasks', allPrivate: true });
   _.get('/info', tasks.getInfo);
 
-  createCommonRoutes(categories, 'categories');
+  createCommonRoutes({ routeController: categories, name: 'categories' });
+
+  createCommonRoutes({ routeController: products, name: 'products' });
 
   app.use(_.routes());
 
