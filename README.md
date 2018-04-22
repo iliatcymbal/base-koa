@@ -44,7 +44,7 @@ fetch('http://localhost:8081/public/login', {
     headers:{
       'Content-type': 'application/json; charset=utf-8'
     },
-    body: JSON.stringify({ email: email.value, password: password.value })
+    body: JSON.stringify({ email: 'admin@a.com', password: 'admin' })
   })
 ```
 
