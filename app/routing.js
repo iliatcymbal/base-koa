@@ -14,7 +14,7 @@ const createCommonRoutes = (opts) => {
 
   fields.forEach(({ verb, method, pub, param }) => {
     const params = param ? `/:${param}` : '';
-    const prefix = !allPrivate && pub ? '/public' : '/public';
+    const prefix = !allPrivate && pub ? '/public' : '';
     const uri = `${prefix}/${name}${params}`;
 
     _[verb](uri, routeController[method]);
