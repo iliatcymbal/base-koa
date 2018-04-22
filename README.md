@@ -4,19 +4,19 @@
 1) Clone repo *git clone https://github.com/iliatcymbal/base-koa.git*
 2) Go to project folder and make *npm i*
 3) Run *npm start* to start server. Server is available on http://localhost:8081/
-4) Check route http://localhost:8081  
+4) Check route http://localhost:8081
    you should see `{data: 'Hello Easy User'}`
-   
+
 ## API
-All urls have public and private mode.  
-Public urls start with `public/` prefix and do not require any authenticating credentials.  
-Private urls require special cookie (ECSID) in every request. User gets this cookie after successful login.  
+All urls have public and private mode.
+Public urls start with `public/` prefix and do not require any authenticating credentials.
+Private urls require special cookie (ECSID) in every request. User gets this cookie after successful login.
 Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials
 
 ### User API
-`public/login` _post_ { email, password } - by default there is one user in the system with `admin@a.com/admin` credentials.  
-On success returns object with user fields {...}  
-On error returns 401 error 'Password or email wrong'  
+`public/login` _post_ { email, password } - by default there is one user in the system with `admin@a.com/admin` credentials.
+On success returns object with user fields {...}
+On error returns 401 error 'Password or email wrong'
 
 There is an example for `login` request with pure js:
 
@@ -35,8 +35,21 @@ There is an example for `login` request with pure js:
   xhr.send(JSON.stringify({ email: 'admin@a.com', password: 'admin' }));
 ```
 
+Using es6 _fetch_ method:
 
-AJAX example with jquery: 
+```
+fetch('http://localhost:8081/public/login', {
+    method: 'POST',
+    credentials: 'include',
+    headers:{
+      'Content-type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify({ email: email.value, password: password.value })
+  })
+```
+
+
+AJAX example with jquery:
 
 ```
 $.ajax({
@@ -53,14 +66,14 @@ $.ajax({
 
 `public/checkUser` _get_ - if user is authenticated, return object with user {...}, in other case - 404 error { error: "User is not authenticated"}
 
-`logout` _get_ - sends to server request to logout user  
+`logout` _get_ - sends to server request to logout user
 
 ### Tasks API
 `tasks/id` _get_ - get task by ID, returns task
 
-`tasks` _get_ - returns array with days of the week:  
-[ day0, day1, day2 ... ]  
-where _day_ is an array of objects: 
+`tasks` _get_ - returns array with days of the week:
+[ day0, day1, day2 ... ]
+where _day_ is an array of objects:
 ```
 {
   "description": String,
@@ -74,9 +87,9 @@ Note: the first item in the days list is a Sunday.
 
 `tasks` _post_ - { title, description?, day } - creates new task in a day, returns new task. _Title_ and _day_ fields are required
 
-`tasks/id` _put_ - { title, description?, id, done? } - update existing task, returns updated task  
+`tasks/id` _put_ - { title, description?, id, done? } - update existing task, returns updated task
 
-AJAX example with jquery: 
+AJAX example with jquery:
 
 ```
 $.ajax({
@@ -91,7 +104,7 @@ $.ajax({
 
 `tasks/id` _delete_ - remove task with given id
 
-`info` _get_ - return object with general tasks info 
+`info` _get_ - return object with general tasks info
 ```
 {
   "done": 2,
@@ -141,7 +154,7 @@ $.ajax({
 `categories` _post_ - { title, products? } - creates a new category, returns new category. _Title_ field is required and should be unique.
 "Products" is an array with product's id `[1, 3, 4]`.
 
-AJAX example with jquery: 
+AJAX example with jquery:
 
 ```
 $.ajax({
@@ -186,7 +199,7 @@ $.ajax({
 
 `products` _post_ - { title, price?, description? } - creates a new product, returns new product. _Title_ field is required and should be unique.
 
-AJAX example with jquery: 
+AJAX example with jquery:
 
 ```
 $.ajax({
