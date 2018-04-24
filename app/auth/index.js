@@ -55,7 +55,7 @@ const initPassport = (app) => {
   app.use(route.get('/logout', async (ctx) => {
     store.destroy(ctx.cookies.get('ECSID'));
     ctx.logout();
-    ctx.status = 204;
+    ctx.body = { data: 'ok' };
   }));
 
   app.use(async (ctx, next) => {
