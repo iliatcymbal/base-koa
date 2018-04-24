@@ -23,8 +23,8 @@ const initPassport = (app) => {
   app.use(route.post('/public/login', (ctx) => {
     return passport.authenticate('local', (err, user) => {
       if (!user) {
-        ctx.body = { user: false };
-        ctx.throw(401, 'Password or email wrong');
+        ctx.status = 401;
+        ctx.body = { error: 'Email or password are wrong' };
       } else {
         ctx.body = { ...user };
         return ctx.login(user);
