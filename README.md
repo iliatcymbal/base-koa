@@ -11,7 +11,9 @@
 All urls have public and private mode.
 Public urls start with `public/` prefix and do not require any authenticating credentials.
 Private urls require special cookie (ECSID) in every request. User gets this cookie after successful login.
-Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials
+Do not forget to use `withCredentials` flag for CORS stuff https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials.
+If you are using ES6 fetch()  method do not forget settings `credentials: 'include'` (https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch)
+
 
 ### User API
 `public/login` _post_ { email, password } - by default there is one user in the system with `admin@a.com/admin` credentials.
@@ -63,6 +65,7 @@ $.ajax({
 ```
 
 `public/user` _post_ { firstname, lastname, email, password } - create new user
+`public/user` _put_ { firstname, lastname, password } - update existing user
 
 `public/checkUser` _get_ - if user is authenticated, return object with user {...}, in other case - 404 error { error: "User is not authenticated"}
 

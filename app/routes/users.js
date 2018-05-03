@@ -37,7 +37,6 @@ class User extends Controller {
 
     const response = { ...user };
     delete response.sid;
-    delete response.password;
     ctx.body = await db.write(this.name, users, response);
 
     await next();
