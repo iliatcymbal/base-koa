@@ -33,10 +33,15 @@ class User extends Controller {
 
     delete updatedUser.email;
 
+    if (!updatedUser.password) {
+      delete updatedUser.password;
+    }
+
     Object.assign(user, updatedUser);
 
     const response = { ...user };
     delete response.sid;
+    delete response.password;
     ctx.body = await db.write(this.name, users, response);
 
     await next();
