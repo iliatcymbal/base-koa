@@ -65,6 +65,7 @@ $.ajax({
 ```
 
 `public/user` _post_ { firstname, lastname, email, password } - create new user
+
 `public/user` _put_ { firstname, lastname, password } - update existing user
 
 `public/checkUser` _get_ - if user is authenticated, return object with user {...}, in other case - 404 error { error: "User is not authenticated"}
