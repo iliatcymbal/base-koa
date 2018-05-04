@@ -1,6 +1,8 @@
 const Controller = require('./controller');
 const db = require('../db');
 
+const fields = ['email', 'firstName', 'lastName', 'password', 'id', 'sid'];
+
 class User extends Controller {
   constructor(name) {
     super(name);
@@ -16,6 +18,7 @@ class User extends Controller {
       ctx.status = 403;
       ctx.body = { error: 'Not unique email' };
     } else {
+      this.clearUser(ctx.request.body);
       await super.create(ctx, next);
     }
   }
@@ -37,6 +40,8 @@ class User extends Controller {
       delete updatedUser.password;
     }
 
+    this.clearUser(updatedUser);
+
     Object.assign(user, updatedUser);
 
     const response = { ...user };
@@ -45,6 +50,14 @@ class User extends Controller {
     ctx.body = await db.write(this.name, users, response);
 
     await next();
+  }
+
+  clearUser(user = {}) {
+    Object.keys(user).forEach((key) => {
+      if (fields.indexOf(key) === -1) {
+        delete user[key];
+      }
+    });
   }
 }
 
