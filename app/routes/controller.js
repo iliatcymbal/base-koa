@@ -41,7 +41,7 @@ module.exports = class Controller {
     const newItem = ctx.request.body;
     const data = await this.getValue();
 
-    newItem.id = data.length + 1;
+    newItem.id = Date.now();
     data.push(newItem);
 
     ctx.body = await db.write(this.name, data, newItem);

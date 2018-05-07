@@ -88,7 +88,7 @@ class Tasks extends Controller {
     const tasks = days[day];
     const newTask = {
       ...data,
-      id: `${day}${tasks.length}`,
+      id: `${day}${Date.now()}`,
     };
 
     tasks.push(newTask);
