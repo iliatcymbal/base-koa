@@ -91,7 +91,7 @@ Note: the first item in the days list is a Sunday.
 
 `tasks` _post_ - { title, description?, day } - creates new task in a day, returns new task. _Title_ and _day_ fields are required
 
-`tasks/id` _put_ - { title, description?, id, done? } - update existing task, returns updated task
+`tasks/id` _put_ - { title, description?, id, done? } - update existing task, returns updated task  
 _done_ can be only *true* | *false* | *undefined*
 
 
