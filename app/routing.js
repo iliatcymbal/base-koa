@@ -3,8 +3,6 @@ const serve = require('koa-static');
 
 const _ = new Router();
 
-const api = ['public', 'users', 'user', 'tasks', 'task', 'products', 'categories', 'info'];
-
 const createCommonRoutes = (opts) => {
   const { routeController, name, allPrivate } = opts;
   const fields = [
