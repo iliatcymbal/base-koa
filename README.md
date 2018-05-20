@@ -9,7 +9,7 @@
 
 
 ## Static content
-Place all your html/js/css/images to _static_ folder to check how your bundle works on server
+Put all your html/js/css/images to _static_ folder to check how your bundle works on server
 
 
 ## API
