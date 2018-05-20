@@ -5,7 +5,12 @@
 2) Go to project folder and make *npm i*
 3) Run *npm start* to start server. Server is available on http://localhost:8081/
 4) Check route http://localhost:8081
-   you should see `{data: 'Hello Easy User'}`
+   you should see greeting text (aka 'Hello, user')
+
+
+## Static content
+Place all your html/js/css/images to _static_ folder to check how your bundle works on server
+
 
 ## API
 All urls have public and private mode.
@@ -91,7 +96,7 @@ Note: the first item in the days list is a Sunday.
 
 `tasks` _post_ - { title, description?, day } - creates new task in a day, returns new task. _Title_ and _day_ fields are required
 
-`tasks/id` _put_ - { title, description?, id, done? } - update existing task, returns updated task  
+`tasks/id` _put_ - { title, description?, id, done? } - update existing task, returns updated task
 _done_ can be only *true* | *false* | *undefined*
 
 

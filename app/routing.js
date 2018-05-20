@@ -1,6 +1,9 @@
 const Router = require('koa-router');
+const serve = require('koa-static');
 
 const _ = new Router();
+
+const api = ['public', 'users', 'user', 'tasks', 'task', 'products', 'categories', 'info'];
 
 const createCommonRoutes = (opts) => {
   const { routeController, name, allPrivate } = opts;
@@ -40,6 +43,7 @@ module.exports = (app) => {
 
   createCommonRoutes({ routeController: products, name: 'products' });
 
+  app.use(serve(__dirname + '/../static'));
   app.use(_.routes());
 
   return _;

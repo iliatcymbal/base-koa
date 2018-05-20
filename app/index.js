@@ -7,7 +7,6 @@ const auth = require('./auth');
 const routing = require('./routing');
 
 const app = new Koa();
-
 app.use(logger());
 app.use(cors({
   credentials: true,
@@ -15,6 +14,7 @@ app.use(cors({
 app.use(bodyParser());
 
 auth(app);
+
 routing(app);
 
 app.listen(8081);
