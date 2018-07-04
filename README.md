@@ -128,6 +128,15 @@ $.ajax({
 
 
 ### Categories API
+`shop_info` _get_ - get general info about all items, returns an object with "categories", "products" and "publishedCategories"
+```
+{
+  categories: 5,
+  publishedCategories: 0,
+  products: 15
+}
+```
+
 `public/categories` _get_ - get list of all categories
 ```
 [

@@ -40,6 +40,19 @@ module.exports = (app) => {
 
   createCommonRoutes({ routeController: products, name: 'products' });
 
+  _.get('/shop_info', async (ctx, next) => {
+    const categoriesPromise = categories.getValue();
+    const productsPromise = products.getValue();
+    const catList = await categoriesPromise;
+    const prodList = await productsPromise;
+
+    ctx.body = {
+      categories: catList.length || 0,
+      publishedCategories: catList.filter(cat => cat.published).length,
+      products: prodList.length || 0
+    };
+  });
+
   app.use(_.routes());
 
   return _;
