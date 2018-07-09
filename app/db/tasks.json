@@ -1,1 +1,115 @@
-[[{"description":"Some description is here","title":"Read book","day":0,"id":"00","done":true},{"description":"","title":"Write new article","day":0,"id":"01","done":false},{"title":"Do exercises","day":0,"id":"02"},{"title":"Cleaning Room","day":0,"id":"03"},{"title":"some new","description":"","id":"04","day":"0"}],[{"title":"Make homework","day":1,"id":"10","done":false},{"title":"t1","id":"11","day":"1","done":true},{"title":"Bosk","id":"11525713324102","day":"1","done":true},{"title":"Wosk","id":"11525713359192","day":"1","done":false},{"title":"qqqqq","day":"1","id":"11526330236735","done":true},{"title":"Some new task","description":"","id":"11526855381117","day":"1"},{"title":"Some new task","description":"","id":"11526855391793","day":"1"},{"title":"Some new task ok","description":"","id":"11526855392283","day":"1"}],[{"description":"","title":"Go to gym","day":"2","id":"20"},{"description":"OKEY","title":"Play PC","day":"2","id":"21"},{"day":"2","title":"Testme","description":"","id":"21525728560221"},{"day":"2","title":"02","description":"","id":"21525728937066"}],[{"title":"Прийти на работу","description":"Не хоцца","id":"30","day":"3"}],[{"title":"Lets!","id":"40","day":"4","done":false},{"title":"Some new","id":"41","day":"4","done":true}],[{"title":"Visit grandmother","day":5,"id":"50","done":true,"description":""},{"title":"Test","id":"51","day":"5","done":true},{"title":"Visit Easycode","id":"52","day":"5","done":false,"description":""},{"title":"Check student's homeworks","is":null,"day":"5","id":"53","done":true},{"title":"New Test","description":"","id":"51526658181443","day":"5"},{"title":"New Test","description":"","id":"51526658182779","day":"5"}],[{"title":"Watch cartoons","day":6,"id":"60","done":false}]]
+[
+  [
+    {
+      "description": "Read 'Eloquent javascript'",
+      "title": "Read book",
+      "day": 0,
+      "id": "00",
+      "done": true
+    },
+    {
+      "description": "Write new article about generators in JS",
+      "title": "Write new article",
+      "day": 0,
+      "id": "01",
+      "done": false
+    },
+    {
+      "title": "Do exercises",
+      "day": 0,
+      "id": "02"
+    },
+    {
+      "title": "Cleaning Room",
+      "day": 0,
+      "id": "03"
+    }
+  ],
+  [
+    {
+      "title": "Make homework",
+      "day": 1,
+      "id": "10",
+      "done": false
+    },
+    {
+      "title": "Some new task",
+      "description": "Task for test purposes",
+      "id": "11526855381117",
+      "day": "1"
+    }
+  ],
+  [
+    {
+      "description": "",
+      "title": "Go to gym",
+      "day": "2",
+      "id": "20"
+    },
+    {
+      "description": "I need this!",
+      "title": "Play PC",
+      "day": "2",
+      "id": "21"
+    }
+  ],
+  [
+    {
+      "title": "Прийти на работу",
+      "description": "Не хоцца",
+      "id": "30",
+      "day": "3"
+    }
+  ],
+  [
+    {
+      "title": "Visit a doctor",
+      "description": "Go to therapist to check my stomach",
+      "id": "40",
+      "day": "4",
+      "done": false
+    },
+    {
+      "title": "Meet Red John",
+      "id": "41",
+      "day": "4",
+      "done": true
+    }
+  ],
+  [
+    {
+      "title": "Visit grandmother",
+      "day": 5,
+      "id": "50",
+      "done": true,
+      "description": ""
+    },
+    {
+      "title": "Visit Easycode",
+      "id": "52",
+      "day": "5",
+      "done": false,
+      "description": ""
+    },
+    {
+      "title": "Check student's homework",
+      "day": "5",
+      "id": "53",
+      "done": true
+    },
+    {
+      "title": "New Test",
+      "description": "",
+      "id": "51526658181443",
+      "day": "5"
+    }
+  ],
+  [
+    {
+      "title": "Watch cartoons",
+      "day": 6,
+      "id": "60",
+      "done": false
+    }
+  ]
+]

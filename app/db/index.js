@@ -1,5 +1,8 @@
 const path = require('path');
 const fs = require('jsonfile');
+const initDefaultUser = require('./initDefaultUser');
+
+initDefaultUser();
 
 module.exports = {
   get(fileName) {
