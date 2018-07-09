@@ -14,9 +14,9 @@ Put all your html/js/css/images to _static_ folder to check how your bundle work
 
 ## API
 All urls have public and private mode.
-Public urls start with `public/` prefix and do not require any authenticating credentials.
-Private urls require special cookie (ECSID) in every request. User gets this cookie after successful login.
-Do not forget to use `withCredentials` flag for CORS stuff (see [details](https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials)).
+Public urls start with `public/` prefix and do not require any authenticating credentials.  
+Private urls require special cookie (ECSID) in every request. User gets this cookie after successful login.  
+Do not forget to use `withCredentials` flag for CORS stuff (see [details](https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/withCredentials)).  
 If you are using ES6 fetch()  method do not forget settings `credentials: 'include'` ([using fetch](https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch))
 
 
