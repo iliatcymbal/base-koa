@@ -1,10 +1,1 @@
-[
-  {
-    "id": 0,
-    "firstName": "Jasper",
-    "lastName": "Pethrick",
-    "email": "admin@a.com",
-    "password": "admin",
-    "age": 19
-  }
-]
+[{"id":0,"firstName":"Janes","lastName":"Patrik","email":"admin@a.com","password":"admin","age":19,"sid":"61d94b4ec2c385d26f2e08983ff0fd16b4c96322be0aec17"},{"email":"i@g.com","firstName":"Ilia","lastName":"Tsymbal","password":"qwerty","id":2},{"email":"t@g.com","firstName":"Albert","lastName":"Einstein","password":"qwerty","id":3,"sid":"a0894efabbbfb00a95bfa1b6709214d05f9f94968cf92d20"},{"id":1526335320756},{"email":"asd@g.com","firstName":"gogy","lastName":"dogy","password":"123456","id":1526855875232,"sid":"0e202296da94336ef5452ca3f011aa58b43d17d8b66a2415"}]
