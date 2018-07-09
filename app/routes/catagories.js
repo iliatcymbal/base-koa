@@ -21,7 +21,12 @@ class Category extends Controller {
   }
 
   async get(ctx) {
-    const values = await this.getValue();
+    let values = await this.getValue();
+
+    if (!ctx.isAuthenticated()) {
+      values = values.filter(item => item.published);
+    }
+
     ctx.body = values.map((cat) => {
       delete cat.products;
       return cat;

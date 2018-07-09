@@ -13,7 +13,7 @@ Base API see in [readme](README.md)
 }
 ```
 
-`public/categories` _get_ - get list of all categories
+`public/categories` _get_ - get list of all categories. For non-authenticated users it returns only published categories.
 ```
 [
   {

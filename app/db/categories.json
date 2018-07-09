@@ -6,7 +6,8 @@
       1,
       2,
       3
-    ]
+    ],
+    "published": true
   },
   {
     "title": "Robots",
@@ -14,7 +15,8 @@
     "products": [
       3,
       4
-    ]
+    ],
+    "published": true
   },
   {
     "title": "Adults toys",
@@ -26,7 +28,8 @@
   },
   {
     "title": "Heroes",
-    "id": 5
+    "id": 5,
+    "published": true
   },
   {
     "title": "Monsters",
