@@ -80,4 +80,6 @@ $.ajax({
 
 `public/checkUser` _get_ - if user is authenticated, return object with user {...}, in other case - 404 error { error: "User is not authenticated"}
 
-`logout` _get_ - sends to server request to logout user
+`logout` _get_ - sends to server request to logout user  
+
+If you need to add new route check [new route](routing.md).
