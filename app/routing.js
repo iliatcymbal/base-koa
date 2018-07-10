@@ -1,4 +1,5 @@
 const Router = require('koa-router');
+const user = require('os').userInfo();
 
 const _ = new Router();
 
@@ -25,7 +26,7 @@ module.exports = (app) => {
   const { users, tasks, categories, products } = require('./routes');
 
   _.get('/', (ctx) => {
-    ctx.body = { data: 'Hello Easy User' };
+    ctx.body = { data: `Hello Easy User >${user.username}<` };
   });
 
   _.get('/users', users.get);
