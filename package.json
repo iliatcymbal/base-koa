@@ -1,6 +1,6 @@
 {
   "name": "koajsBaseApp",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A simple Koajs 2 REST Application",
   "author": {
     "name": "Ilia Tsymbal",
