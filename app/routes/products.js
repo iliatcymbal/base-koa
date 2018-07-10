@@ -3,6 +3,7 @@ const Controller = require('./controller');
 class Products extends Controller {
   constructor(name) {
     super(name);
+    this.scheme = ['id', 'price', 'title', 'description', 'image'];
 
     this.create = this.create.bind(this);
   }

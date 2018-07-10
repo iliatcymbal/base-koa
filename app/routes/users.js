@@ -9,6 +9,7 @@ class User extends Controller {
 
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
+    this.scheme = [...fields, 'age'];
   }
 
   async create(ctx, next) {
@@ -24,7 +25,7 @@ class User extends Controller {
   }
 
   async update(ctx, next) {
-    const updatedUser = ctx.request.body;
+    const updatedUser = this.adjustToScheme(ctx.request.body);
     const users = await this.getValue();
     const user = users.find(usr => usr.email === updatedUser.email);
 

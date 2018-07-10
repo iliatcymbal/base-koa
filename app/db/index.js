@@ -20,6 +20,10 @@ module.exports = {
 
   write(fileName, data, addInfo) {
     return new Promise((res, rej) => {
+      if (!addInfo) {
+        rej('Empty data');
+      }
+
       fs.writeFile(path.resolve(__dirname, `${fileName}.json`), data, (err) => {
         if (err) {
           console.log(err);

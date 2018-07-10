@@ -3,12 +3,27 @@ const db = require('../db/');
 module.exports = class Controller {
   constructor(name) {
     this.name = name;
+    this.scheme = [];
+
     this.getValue = this.getValue.bind(this);
     this.get = this.get.bind(this);
     this.getById = this.getById.bind(this);
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
+  }
+
+  adjustToScheme(data = {}) {
+    if (!this.scheme.length) return data;
+
+    const adjustedData = {};
+    Object.keys(data).forEach((key) => {
+      if (this.scheme.includes(key)) {
+        adjustedData[key] = data[key];
+      }
+    });
+
+    return Object.keys(adjustedData).length ? adjustedData : null;
   }
 
   getValue() {
@@ -38,7 +53,7 @@ module.exports = class Controller {
   }
 
   async create(ctx, next) {
-    const newItem = ctx.request.body;
+    const newItem = this.adjustToScheme(ctx.request.body);
     const data = await this.getValue();
 
     newItem.id = Date.now();
@@ -50,7 +65,7 @@ module.exports = class Controller {
   }
 
   async update(ctx, next) {
-    const updatedItem = ctx.request.body;
+    const updatedItem = this.adjustToScheme(ctx.request.body);
     const { id } = ctx.params;
     const data = await this.getValue();
     const item = data.find(element => String(element.id) === String(id));

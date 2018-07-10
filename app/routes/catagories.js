@@ -4,6 +4,7 @@ const products = require('./products');
 class Category extends Controller {
   constructor(name) {
     super(name);
+    this.scheme = ['id', 'title', 'products', 'description', 'published'];
 
     this.create = this.create.bind(this);
     this.get = this.get.bind(this);
@@ -52,7 +53,7 @@ class Category extends Controller {
     ctx.body = item;
   }
 
-  async create(ctx, next) {
+/*  async create(ctx, next) {
     const newItem = ctx.request.body;
 
     if (newItem.products && newItem.products.length) {
@@ -60,7 +61,7 @@ class Category extends Controller {
     }
 
     super.create(ctx, next);
-  }
+  }*/
 
   async update(ctx, next) {
     const updatedItem = ctx.request.body;

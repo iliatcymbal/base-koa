@@ -4,6 +4,7 @@ const db = require('../db');
 class Tasks extends Controller {
   constructor(name) {
     super(name);
+    this.scheme = ['id', 'title', 'description', 'day', 'done'];
 
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
@@ -69,8 +70,8 @@ class Tasks extends Controller {
   }
 
   async create(ctx, next) {
-    const data = ctx.request.body;
-    const { day, title } = data;
+    const data = this.adjustToScheme(ctx.request.body);
+    const { day, title } = data || {};
 
     if (day === undefined) {
       ctx.status = 400;
@@ -99,9 +100,9 @@ class Tasks extends Controller {
   }
 
   async update(ctx, next) {
-    const data = ctx.request.body;
+    const data = this.adjustToScheme(ctx.request.body);
     const { id } = ctx.params;
-    const { day, title, description } = data;
+    const { day, title, description } = data || {};
 
     if (day === undefined) {
       ctx.status = 400;
