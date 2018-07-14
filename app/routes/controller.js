@@ -76,11 +76,11 @@ module.exports = class Controller {
       return;
     }
 
-    delete updatedItem.id;
+    // delete updatedItem.id;
     Object.assign(item, updatedItem);
 
+    ctx.status = 200;
     ctx.body = await db.write(this.name, data, updatedItem);
-
     await next();
   }
 

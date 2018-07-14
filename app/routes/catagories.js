@@ -70,7 +70,7 @@ class Category extends Controller {
       updatedItem.products = updatedItem.products.map(item => item && item.id || item);
     }
 
-    super.update(ctx, next);
+    await super.update(ctx, next);
   }
 }
 
