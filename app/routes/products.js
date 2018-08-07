@@ -18,6 +18,18 @@ class Products extends Controller {
       await super.create(ctx, next);
     }
   }
+
+  async update(ctx, next) {
+    const updatedItem = ctx.request.body;
+    const products = await this.findAllByField('title', updatedItem.title);
+
+    if (products.length > 1) {
+      ctx.status = 403;
+      ctx.body = { error: 'Not unique title' };
+    } else {
+      await super.update(ctx, next);
+    }
+  }
 }
 
 module.exports = new Products('products');

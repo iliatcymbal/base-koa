@@ -47,9 +47,16 @@ module.exports = class Controller {
 
   async findByField(field, value) {
     const data = await this.getValue();
-    const item = data.find(val => String(val[field]) === String(value));
+    const item = data.find(val => String(val[field]).toLowerCase() === String(value).toLowerCase());
 
     return item;
+  }
+
+  async findAllByField(field, value) {
+    const data = await this.getValue();
+    const items = data.filter(val => String(val[field]).toLowerCase() === String(value).toLowerCase());
+
+    return items;
   }
 
   async create(ctx, next) {
@@ -109,6 +116,19 @@ module.exports = class Controller {
     ctx.body = item;
 
     await next();
+  }
+
+  async getByTitle(ctx) {
+    const { title } = ctx.params;
+    const values = await this.getValue();
+    const linkTitle = title.replace(/-*/g, ' ').toLowerCase();
+    const item = values.find(({ title = ''}) => title.replace(/-*/g, ' ').toLowerCase() === linkTitle);
+
+    if (!item) {
+      return ctx.throw('cannot find requested resource', 404);
+    }
+
+    ctx.body = item;
   }
 
 };

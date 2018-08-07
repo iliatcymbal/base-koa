@@ -8,6 +8,7 @@ const createCommonRoutes = (opts) => {
   const fields = [
     { verb: 'get', method: 'get', pub: true },
     { verb: 'get', method: 'getById', pub: true, param: 'id' },
+    { verb: 'post', method: 'getByTitle', pub: true, param: 'title' },
     { verb: 'post', method: 'create' },
     { verb: 'put', method: 'update', param: 'id' },
     { verb: 'delete', method: 'delete', param: 'id' },

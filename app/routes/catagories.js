@@ -53,18 +53,17 @@ class Category extends Controller {
     ctx.body = item;
   }
 
-/*  async create(ctx, next) {
-    const newItem = ctx.request.body;
-
-    if (newItem.products && newItem.products.length) {
-      newItem.products = newItem.products.map(item => item && item.id || item);
-    }
-
-    super.create(ctx, next);
-  }*/
-
   async update(ctx, next) {
     const updatedItem = ctx.request.body;
+    const { id } = updatedItem;
+    const categories = await this.findAllByField('title', updatedItem.title);
+    const notUniqueTitle = categories.some(cat => id !== cat.id);
+
+    if (notUniqueTitle) {
+      ctx.status = 403;
+      ctx.body = { error: 'Not unique title' };
+      return;
+    }
 
     if (updatedItem.products && updatedItem.products.length) {
       updatedItem.products = updatedItem.products.map(item => item && item.id || item);
