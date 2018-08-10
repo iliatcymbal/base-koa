@@ -9,6 +9,7 @@ const auth = require('./auth');
 const routing = require('./routing');
 
 const pathToStatic = path.resolve(__dirname, '..', 'static');
+const PORT = 8086;
 
 const app = new Koa();
 app.use(logger());
@@ -22,5 +23,5 @@ auth(app);
 
 routing(app);
 
-app.listen(8081);
-console.log('Check http://localhost:8081');
+app.listen(PORT);
+console.log(`Check http://localhost:${PORT}`);
