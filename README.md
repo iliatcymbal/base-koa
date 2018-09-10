@@ -6,7 +6,7 @@
 3) Run *npm start* to start server. Server is available on http://localhost:8081/
 4) Check URL http://localhost:8086
    you should see greeting text (aka 'Hello, user')
-5) To change port number go to _app/index.js_ and find line with code `const PORT = 8086;`. Replace `8086` with required number
+5) In case you need to change port number go to _app/index.js_ and find line with code `const PORT = 8086;`. Replace `8086` with required number
 
 
 ## Static content
