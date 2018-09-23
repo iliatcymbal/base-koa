@@ -13,7 +13,7 @@ class Category extends Controller {
   async create(ctx, next) {
     const category = await this.findByField('title', ctx.request.body.title);
 
-    if (category) {
+    if (category || !category.title) {
       ctx.status = 403;
       ctx.body = { error: 'Not unique title' };
     } else {
@@ -59,7 +59,7 @@ class Category extends Controller {
     const categories = await this.findAllByField('title', updatedItem.title);
     const notUniqueTitle = categories.some(cat => id !== cat.id);
 
-    if (notUniqueTitle) {
+    if (notUniqueTitle || !updatedItem.title) {
       ctx.status = 403;
       ctx.body = { error: 'Not unique title' };
       return;
