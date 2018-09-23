@@ -65,9 +65,9 @@ class Category extends Controller {
       return;
     }
 
-    if (updatedItem.products && updatedItem.products.length) {
+    /*if (updatedItem.products && updatedItem.products.length) {
       updatedItem.products = updatedItem.products.map(item => item && item.id || item);
-    }
+    }*/
 
     await super.update(ctx, next);
   }

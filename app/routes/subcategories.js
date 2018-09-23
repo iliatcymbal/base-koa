@@ -22,7 +22,6 @@ class SubCategory extends Controller {
   async get(ctx) {
     const values = await this.getValue();
     ctx.body = values.map((cat) => {
-      delete cat.products;
       return cat;
     });
   }
