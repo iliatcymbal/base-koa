@@ -27,6 +27,6 @@
   },
   "scripts": {
     "start": "node --harmony app/index.js",
-    "start:dev": "node_modules/.bin/nodemon --harmony app/index.js"
+    "start:dev": "npx nodemon --harmony app/index.js"
   }
 }

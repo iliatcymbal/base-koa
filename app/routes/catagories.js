@@ -46,10 +46,10 @@ class Category extends Controller {
 
     if (item.products && item.products.length) {
       item.products = prods
-        .filter(prod => item.products.find(id => String(id) === String(prod.id)))
+        .filter(prod => item.products.find(({ id }) => String(id) === String(prod.id)))
         .map(({ id, title }) => ({ id, title }));
     }
-
+    console.log(666, item);
     ctx.body = item;
   }
 
