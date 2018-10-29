@@ -49,7 +49,6 @@ class Category extends Controller {
         .filter(prod => item.products.find(({ id }) => String(id) === String(prod.id)))
         .map(({ id, title }) => ({ id, title }));
     }
-    console.log(666, item);
     ctx.body = item;
   }
 
