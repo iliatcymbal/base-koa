@@ -3,6 +3,7 @@ const tasks = require('./tasks');
 const categories = require('./catagories');
 const subcategories = require('./subcategories');
 const products = require('./products');
+const upload = require('./upload');
 
 module.exports = {
   users,
@@ -10,4 +11,5 @@ module.exports = {
   categories,
   subcategories,
   products,
+  upload,
 };

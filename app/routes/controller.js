@@ -11,6 +11,7 @@ module.exports = class Controller {
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
+    this.upload = this.upload.bind(this);
   }
 
   adjustToScheme(data = {}) {
@@ -43,6 +44,8 @@ module.exports = class Controller {
     }
 
     ctx.body = item;
+
+    return item;
   }
 
   async findByField(field, value) {
@@ -131,4 +134,18 @@ module.exports = class Controller {
     ctx.body = item;
   }
 
+  async upload(ctx, next) {
+    const { id } = ctx.params;
+
+    if (!id) {
+      ctx.body = { uploaded: true };
+      return;
+    }
+
+    console.log(777, ctx.req.file);
+    const item = await this.getById(ctx);
+    item.image = ctx.req.file.originalname;
+    ctx.request.body = item;
+    await this.update(ctx, next);
+  }
 };

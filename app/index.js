@@ -16,7 +16,7 @@ app.use(logger());
 app.use(cors({
   credentials: true,
 }));
-app.use(bodyParser());
+app.use(bodyParser({ multipart: true }));
 
 app.use(serve(pathToStatic));
 auth(app);

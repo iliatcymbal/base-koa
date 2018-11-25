@@ -1,7 +1,21 @@
 const Router = require('koa-router');
 const user = require('os').userInfo();
+const multer = require('koa-multer');
+const path = require('path');
+
+const { users, tasks, categories, products } = require('./routes');
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, path.resolve(__dirname, 'files'));
+  },
+  filename(req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
 
 const _ = new Router();
+const uploader = multer({ storage });
 
 const createCommonRoutes = (opts) => {
   const { routeController, name, allPrivate } = opts;
@@ -21,11 +35,11 @@ const createCommonRoutes = (opts) => {
 
     _[verb](uri, routeController[method]);
   });
+
+  _.post(`/${name}/:id/upload`, uploader.single('file'), routeController.upload);
 };
 
 module.exports = (app) => {
-  const { users, tasks, categories, products } = require('./routes');
-
   _.get('/', (ctx) => {
     ctx.body = { data: `Hello Easy User >${user.username}<` };
   });
@@ -51,7 +65,7 @@ module.exports = (app) => {
     ctx.body = {
       categories: catList.length || 0,
       publishedCategories: catList.filter(cat => cat.published).length,
-      products: prodList.length || 0
+      products: prodList.length || 0,
     };
   });
 
