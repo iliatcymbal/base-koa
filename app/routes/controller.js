@@ -142,9 +142,8 @@ module.exports = class Controller {
       return;
     }
 
-    console.log(777, ctx.req.file);
     const item = await this.getById(ctx);
-    item.image = ctx.req.file.originalname;
+    item.image = `${ctx.origin}/${ctx.req.file.originalname}`;
     ctx.request.body = item;
     await this.update(ctx, next);
   }

@@ -9,6 +9,8 @@ const auth = require('./auth');
 const routing = require('./routing');
 
 const pathToStatic = path.resolve(__dirname, '..', 'static');
+const pathToFiles = path.resolve(__dirname, 'files');
+
 const PORT = 8086;
 
 const app = new Koa();
@@ -19,6 +21,8 @@ app.use(cors({
 app.use(bodyParser({ multipart: true }));
 
 app.use(serve(pathToStatic));
+app.use(serve(pathToFiles));
+
 auth(app);
 
 routing(app);
