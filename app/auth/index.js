@@ -26,7 +26,11 @@ const initPassport = (app) => {
         ctx.status = 401;
         ctx.body = { error: 'Email or password are wrong' };
       } else {
-        ctx.body = { ...user };
+        const uiUser = { ...user };
+        delete uiUser.password;
+        delete uiUser.sid;
+
+        ctx.body = uiUser;
         return ctx.login(user);
       }
     })(ctx);

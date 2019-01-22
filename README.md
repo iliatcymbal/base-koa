@@ -35,7 +35,7 @@ There is an example for `login` request with pure js:
 
 ```
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://localhost:8081/public/login');
+  xhr.open('POST', 'http://localhost:8086/public/login');
   xhr.onload = () => {
     if (xhr.status === 200) {
       console.log(xhr.responseText);
