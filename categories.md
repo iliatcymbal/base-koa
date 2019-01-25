@@ -64,7 +64,9 @@ $.ajax({
 ```
 
 `categories/id` _put_ - { title, products? } - updates an existing category, returns updated category. _Title_ field is required and should be unique.
-"Products" is an array with product's id
+"Products" is an array with product's id  
+
+`categories/id` _delete_ - delete category by id.
 
 
 ### Products API
