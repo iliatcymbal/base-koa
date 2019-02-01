@@ -27,7 +27,7 @@ Base API see in [readme](README.md)
 ]
 ```
 
-`public/categories/id` _get_ - get category by ID, returns category as an object with "id", "title", "published" and "products" fields.
+`public/categories/{id}` _get_ - get category by ID, returns category as an object with "id", "title", "published" and "products" fields.
 "Products" is an array with objects which describe product in this category. Can be empty or doesn't exist.
 ```
 {
@@ -63,10 +63,10 @@ $.ajax({
 });
 ```
 
-`categories/id` _put_ - { title, products? } - updates an existing category, returns updated category. _Title_ field is required and should be unique.
+`categories/{id}` _put_ - { title, products? } - updates an existing category, returns updated category. _Title_ field is required and should be unique.
 "Products" is an array with product's id  
 
-`categories/id` _delete_ - delete category by id.
+`categories/{id}` _delete_ - delete category by id.
 
 
 ### Products API
@@ -86,7 +86,7 @@ $.ajax({
 ]
 ```
 
-`public/products/id` _get_ - get product by ID, returns product as an object with "id", "title", "description" and "price" fields.
+`public/products/{id}` _get_ - get product by ID, returns product as an object with "id", "title", "description" and "price" fields.
 ```
 {
   "title": "HERB CABLER",
@@ -110,4 +110,19 @@ $.ajax({
 });
 ```
 
-`products/id` _put_ - { title, price?, description? } - updates an existing product, returns updated product. _Title_ field is required and should be unique.
+`products/{id}` _put_ - { title, price?, description? } - updates an existing product, returns updated product. _Title_ field is required and should be unique.
+
+`products/{id}/upload` _post_ - { binary } - upload image to product with "id". Request data should have _multipart/form-data_ type.
+Simple example:
+```
+...
+const data = new FormData();
+data.append('file', inputDomElement.files[0]);
+
+fetch('http://localhost:8081/public/login', {
+    method: 'POST',
+    credentials: 'include',
+    body: data
+  })
+```
+*Note*: **do not try** to stringify body or set additional headers for content type. Also when appending data to FormData use "file" key (see example).
