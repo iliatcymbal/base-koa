@@ -3,7 +3,7 @@
 ## Installation
 1) Clone repo *git clone https://github.com/iliatcymbal/base-koa.git*
 2) Go to project folder and make *npm i*
-3) Run *npm start* to start server. Server is available on http://localhost:8081/
+3) Run *npm start* to start server. Server is available on http://localhost:8086/
 4) Check URL http://localhost:8086
    you should see greeting text (aka 'Hello, user')
 5) In case you need to change port number go to _app/index.js_ and find line with code `const PORT = 8086;`. Replace `8086` with required number
