@@ -51,7 +51,7 @@ There is an example for `login` request with pure js:
 Using es6 _fetch_ method:
 
 ```
-fetch('http://localhost:8081/public/login', {
+fetch('http://localhost:8086/public/login', {
     method: 'POST',
     credentials: 'include',
     headers:{
@@ -67,7 +67,7 @@ AJAX example with jquery:
 ```
 $.ajax({
   type: 'post',
-  url: 'http://localhost:8081/public/login',
+  url: 'http://localhost:8086/public/login',
   data: { email: 'admin@a.com', password: 'admin' },
   xhrFields: {
     withCredentials: true
