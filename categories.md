@@ -68,6 +68,11 @@ $.ajax({
 
 `categories/{id}` _delete_ - delete category by id.
 
+`public/categories/{title}` _post_ - find category by its title.
+```
+fetch('http://localhost:8086/public/categories/tow-track', { method: 'post' })
+```
+
 
 ### Products API
 `public/products` _get_ - get list of all products
@@ -111,6 +116,11 @@ $.ajax({
 ```
 
 `products/{id}` _put_ - { title, price?, description? } - updates an existing product, returns updated product. _Title_ field is required and should be unique.
+
+`public/products/{title}` _post_ - find product by its title.
+```
+fetch('http://localhost:8086/public/products/tow-track', { method: 'post' })
+```
 
 `products/{id}/upload` _post_ - { binary } - upload image to product with "id". Request data should have _multipart/form-data_ type.
 Simple example:

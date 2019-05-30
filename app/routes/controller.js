@@ -12,6 +12,7 @@ module.exports = class Controller {
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
     this.upload = this.upload.bind(this);
+    this.getByTitle = this.getByTitle.bind(this);
   }
 
   adjustToScheme(data = {}) {
@@ -124,11 +125,13 @@ module.exports = class Controller {
   async getByTitle(ctx) {
     const { title } = ctx.params;
     const values = await this.getValue();
-    const linkTitle = title.replace(/-*/g, ' ').toLowerCase();
-    const item = values.find(({ title = ''}) => title.replace(/-*/g, ' ').toLowerCase() === linkTitle);
+    const linkTitle = title.replace(/-+/g, ' ').toLowerCase();
+    const item = values.find(({ title = ''}) => title.replace(/-+/g, ' ').toLowerCase() === linkTitle);
 
     if (!item) {
-      return ctx.throw('cannot find requested resource', 404);
+      ctx.status = 404;
+      ctx.body = { error: `Can't find entity with ${linkTitle} title` };
+      return;
     }
 
     ctx.body = item;
