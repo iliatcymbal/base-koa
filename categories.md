@@ -109,7 +109,7 @@ AJAX example with jquery:
 ```
 $.ajax({
   type: 'post',
-  url: 'http://localhost:8081/products',
+  url: 'http://localhost:8086/products',
   data: { title: 'New product', price: '15$' },
   xhrFields: {
     withCredentials: true
@@ -131,7 +131,7 @@ Simple example:
 const data = new FormData();
 data.append('file', inputDomElement.files[0]);
 
-fetch('http://localhost:8081/public/login', {
+fetch('http://localhost:8086/public/login', {
     method: 'POST',
     credentials: 'include',
     body: data
