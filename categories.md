@@ -100,6 +100,8 @@ fetch('http://localhost:8086/public/categories/tow-track', { method: 'post' })
 }
 ```
 
+`products/{id}` _delete_ - delete product by id.
+
 `products` _post_ - { title, price?, description? } - creates a new product, returns new product. _Title_ field is required and should be unique.
 
 AJAX example with jquery:
