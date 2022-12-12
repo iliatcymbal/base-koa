@@ -102,7 +102,7 @@ class Tasks extends Controller {
   async update(ctx, next) {
     const data = this.adjustToScheme(ctx.request.body);
     const { id } = ctx.params;
-    const { day, title, description } = data || {};
+    const { day, title, description, done } = data || {};
 
     if (day === undefined) {
       ctx.status = 400;
@@ -129,10 +129,7 @@ class Tasks extends Controller {
     if (task) {
       task.title = title;
       task.description = description;
-
-      if ('done' in data) {
-        task.done = data.done;
-      }
+      task.done = done;
     }
 
     await db.write(this.name, days, task);

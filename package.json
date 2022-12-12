@@ -28,6 +28,6 @@
   },
   "scripts": {
     "start": "node --harmony app/index.js",
-    "start:dev": "npx nodemon --harmony app/index.js"
+    "start:dev": "node --inspect app/index.js"
   }
 }
