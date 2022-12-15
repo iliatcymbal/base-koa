@@ -37,8 +37,6 @@ class LocalStore {
     } catch (e) {
       console.log('Error remove sid user', e);
     }
-
-    delete this.sessions[sid];
   }
 }
 
